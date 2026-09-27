@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["WhisperAudioConverterModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.audioconverter.WhisperAudioConverterModule"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-audio-converter": ["../src/index"],
+      "expo-audio-converter/*": ["../src/*"]
+    }
+  }
+}
