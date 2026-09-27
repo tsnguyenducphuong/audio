@@ -7,7 +7,6 @@ import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.net.Uri
 import android.os.SystemClock
-import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
@@ -18,9 +17,10 @@ import java.io.RandomAccessFile
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.UUID
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+// import kotlinx.coroutines.CoroutineScope
+// import kotlinx.coroutines.Dispatchers
+// import kotlinx.coroutines.launch
+// import expo.modules.kotlin.Promise
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -684,40 +684,7 @@ class WhisperAudioConverterModule : Module() {
         options = options
       )
     }
-
-    AsyncFunction("convertAndTrimAudio_v1") {
-        inputPath: String,
-        startOffset: Double,
-        endOffset: Double,
-        options: WhisperAudioConversionOptions,
-        promise: Promise ->
-
-      CoroutineScope(Dispatchers.IO).launch {
-        try {
-          val result =
-            performConversion(
-              inputPath = inputPath,
-              startOffset = startOffset,
-              endOffset = endOffset,
-              options = options
-            )
-
-          promise.resolve(result)
-        } catch (e: CodedException) {
-          promise.reject(
-            e.code,
-            e.message ?: "Audio conversion failed.",
-            e
-          )
-        } catch (e: Exception) {
-          promise.reject(
-            "ERR_CONVERSION",
-            e.message ?: e.toString(),
-            e
-          )
-        }
-      }
-    }
+  
   }
 
   private val context: Context
