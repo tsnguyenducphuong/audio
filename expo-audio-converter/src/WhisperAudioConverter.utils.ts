@@ -67,6 +67,7 @@ export type WhisperAudioConversionResult =
   | { success: true; outputPath: string }
   | {
       success: false;
+      outputPath: string;
       code: WhisperAudioConversionError | 'unknown';
       message: string;
       isValidationError: boolean;
@@ -126,6 +127,7 @@ export async function trimAndConvertAudio(
   if (!inputUri || typeof inputUri !== 'string') {
     return {
       success: false,
+      outputPath: '',
       code: WhisperAudioConversionError.invalidInputPath,
       message: ERROR_MESSAGES[WhisperAudioConversionError.invalidInputPath],
       isValidationError: true,
@@ -136,6 +138,7 @@ export async function trimAndConvertAudio(
   if (startOffset < 0 || endOffset < 0 || startOffset >= endOffset) {
     return {
       success: false,
+      outputPath: '',
       code: WhisperAudioConversionError.invalidRange,
       message: ERROR_MESSAGES[WhisperAudioConversionError.invalidRange],
       isValidationError: true,
@@ -156,6 +159,7 @@ export async function trimAndConvertAudio(
     if (!outputPath) {
       return {
         success: false,
+        outputPath: '',
         code: WhisperAudioConversionError.emptyOutput,
         message: ERROR_MESSAGES[WhisperAudioConversionError.emptyOutput],
         isValidationError: false,
@@ -175,6 +179,7 @@ export async function trimAndConvertAudio(
 
     return {
       success: false,
+      outputPath: '',
       code,
       message,
       isValidationError: code !== 'unknown' && VALIDATION_ERRORS.has(code),
