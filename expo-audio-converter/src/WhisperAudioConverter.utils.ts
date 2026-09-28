@@ -64,7 +64,7 @@ const VALIDATION_ERRORS = new Set<WhisperAudioConversionError>([
 ]);
 
 export type WhisperAudioConversionResult =
-  | { success: true; outputPath: string }
+  | { success: true; outputPath: string; message:string }
   | {
       success: false;
       outputPath: string;
@@ -167,7 +167,7 @@ export async function trimAndConvertAudio(
       };
     }
 
-    return { success: true, outputPath };
+    return { success: true, outputPath,message:'succeed' };
   } catch (error) {
     const code = extractErrorCode(error);
     const message =

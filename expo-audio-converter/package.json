@@ -1,6 +1,6 @@
 {
   "name": "expo-audio-converter",
-  "version": "0.2.4",
+  "version": "0.2.9",
   "description": "Audio Processing Expo Module",
   "main": "build/index.js",
   "types": "build/index.d.ts",

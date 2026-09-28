@@ -4,13 +4,13 @@ plugins {
 }
 
 group = 'expo.modules.audioconverter'
-version = '0.2.4'
+version = '0.2.9'
 
 android {
   namespace "expo.modules.audioconverter"
   defaultConfig {
-    versionCode 4
-    versionName "0.2.4"
+    versionCode 5
+    versionName "0.2.9"
   }
   lintOptions {
     abortOnError false
