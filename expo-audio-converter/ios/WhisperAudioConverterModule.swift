@@ -316,7 +316,7 @@ public final class WhisperAudioConverterModule: Module {
       AVLinearPCMBitDepthKey: options.bitDepth,
       AVLinearPCMIsFloatKey: false,
       AVLinearPCMIsBigEndianKey: false,
-      AVLinearPCMIsNonInterleavedKey: false // WAV files must be interleaved on disk
+      AVLinearPCMIsNonInterleaved: false // WAV files must be interleaved on disk
     ]
 
     let outputFile: AVAudioFile
